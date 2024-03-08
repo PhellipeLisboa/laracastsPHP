@@ -1,10 +1,11 @@
 <?php 
 
+use Core\App;
 use Core\Database;
 
-// Connect to the database and execute a query.
-$config = require(base_path('config.php'));
-$db = new Database($config['database'], 'root', 'root');
+
+$db = App::resolve(Database::class);
+
 
 $currentUserId = 1; 
     
