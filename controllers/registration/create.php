@@ -1,10 +1,6 @@
 <?php 
 
 
-if ($_SESSION['user'] ?? false) {
-    header('location: /');
-    exit();
-}
-
-
-view('registration/create.view.php');
+view('registration/create.view.php', [
+    'heading' => 'register'
+]);

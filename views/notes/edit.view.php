@@ -39,15 +39,23 @@
                 </div>
             </div>
 
-            <!-- <div class="mt-6 flex items-center justify-end gap-x-2">
-                <button type="button"
-                    class="rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancel</button>
-                <button type="submit"
-                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
-            </div> -->
         </form>
 
-    </div>
+        <div class="space-y-12">
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="col-span-full">
+                    <form action="/note" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="id" value="<?= $note['id']?>">
+
+                        <button type="submit"
+                            class="rounded-md bg-red-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500">Delete
+                            Note</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
 </main>
 
 <?php require(base_path('views/partials/footer.php'))?>
