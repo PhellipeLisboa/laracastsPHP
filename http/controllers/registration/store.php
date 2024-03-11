@@ -1,8 +1,13 @@
 <?php
 
+
 use Core\Database;
 use Core\Validator;
 use Core\App;
+use Core\Authenticator;
+
+
+use Http\Forms\LoginForm;
 
 
 $email = $_POST['email'];
@@ -49,11 +54,27 @@ if ($user) {
 
 // mark that the user has logged in.
 
-login([
+/* login([
     'email' => $email
 ]);
 
 header('location: /');
-exit();
+exit(); */
 
-//view('registration/create.view.php');
+$form = new LoginForm();
+
+if ($form->validate($email, $password)) {
+    
+    $auth = new Authenticator();
+
+    if ($auth->attempt($email, $password)) {
+        redirect('/');
+    }
+    
+    $form->error('email', 'No matching account found for that email address and password.');
+} 
+
+
+return view('registration/create.view.php', [
+    'errors' => $form->errors()
+]);
